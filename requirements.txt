@@ -1,0 +1,5 @@
+google-cloud-aiplatform
+google-adk
+requests  
+PyPDF2
+python-dotenv
