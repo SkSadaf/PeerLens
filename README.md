@@ -15,4 +15,4 @@ python main.py
 
 {Give the following when asked for input:}
 
-paper1,paper2,paper3, paper4
+paper1,paper2,paper3,paper4
