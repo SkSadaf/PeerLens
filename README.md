@@ -51,6 +51,11 @@ npm start
 4. **Evaluation**: Parallel agents debate and evaluate your selected idea  
 5. **Get Results**: Receive publication probability score with detailed analysis  
 
+## How it works
+
+<img width="579" height="199" alt="image" src="https://github.com/user-attachments/assets/436c2ab2-145b-43ab-b02b-119664748820" />
+
+
 ## Use Cases
 - **Academic Researchers**: Identify gaps in current literature  
 - **Graduate Students**: Find thesis/dissertation topics  
