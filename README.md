@@ -1,18 +1,61 @@
 # PeerLens
 
+PeerLens is for researchers who want to accelerate their literature review process and identify promising research opportunities. Our AI-powered tool uses Google ADK and Gemini API to analyze 4-5 uploaded research papers, automatically generating specific research gap ideas and evaluating their publication potential through an intelligent assessment system. The platform provides researchers with a publication probability score and detailed justification for each proposed idea, transforming hours of manual literature analysis into actionable, publication-ready research concepts.
 
-How to run:
+## Tech Stack
 
-**  ADD YOUR API KEY IN .env FILE  **
+### Backend
+- Python  
+- Google ADK  
+- Gemini API  
+- Paper processing and text extraction  
+- Parallel agent architecture  
 
-python3 -m venv venv
+### Frontend
+- React.js  
+- Auth0 Authentication  
+- React Router  
+- Modern UI components  
 
-venv\Scripts\activate
-
+## Backend Setup
+```
 pip install -r requirements.txt
+```
 
-python main.py
+## Frontend Setup
+```
+cd frontend
+npm install
+```
 
-{Give the following when asked for input:}
+## Configuration
+Update a `.env` file with the following variables:
 
-paper1,paper2,paper3,paper4
+```
+# Gemini API Configuration
+GEMINI_API_KEY=your_gemini_api_key
+
+# Auth0 Configuration (Frontend)
+REACT_APP_AUTH0_DOMAIN=your_auth0_domain
+REACT_APP_AUTH0_CLIENT_ID=your_client_id
+```
+
+## Running the Application
+```
+cd frontend
+npm start
+```
+
+## Using PeerLens
+1. **Upload Papers**: Upload 4-5 research papers in PDF or text format  
+2. **Generate Ideas**: The system analyzes papers and generates research gap opportunities  
+3. **Select Idea**: Choose from the generated ideas list  
+4. **Evaluation**: Parallel agents debate and evaluate your selected idea  
+5. **Get Results**: Receive publication probability score with detailed analysis  
+
+## Use Cases
+- **Academic Researchers**: Identify gaps in current literature  
+- **Graduate Students**: Find thesis/dissertation topics  
+- **Research Teams**: Evaluate project viability before funding applications  
+- **Publication Planning**: Assess publication potential before starting research  
+```
