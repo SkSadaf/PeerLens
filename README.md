@@ -8,8 +8,6 @@ PeerLens is for researchers who want to accelerate their literature review proce
 - Python  
 - Google ADK  
 - Gemini API  
-- Paper processing and text extraction  
-- Parallel agent architecture  
 
 ### Frontend
 - React.js  
