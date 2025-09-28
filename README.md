@@ -1,3 +1,4 @@
+<img width="39" height="39" alt="image" src="https://github.com/user-attachments/assets/30b67560-b2d9-4c2c-9ecb-7c1806ef593f" />
 # PeerLens
 
 PeerLens is for researchers who want to accelerate their literature review process and identify promising research opportunities. Our AI-powered tool uses Google ADK and Gemini API to analyze 4-5 uploaded research papers, automatically generating specific research gap ideas and evaluating their publication potential through an intelligent assessment system. The platform provides researchers with a publication probability score and detailed justification for each proposed idea, transforming hours of manual literature analysis into actionable, publication-ready research concepts.
