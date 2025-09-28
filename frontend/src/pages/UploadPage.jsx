@@ -56,8 +56,19 @@ export default function UploadPage() {
         </div>
 
         <div style={{marginTop:16}}>
-          <button className="btn btn-primary" disabled={loading} onClick={onSubmit}>
-            {loading ? "Generating ideas…" : "Generate Ideas"}
+          <button className="btn btn-primary btn-loading" disabled={loading} onClick={onSubmit}>
+            {loading ? (
+    <>
+      Generating ideas
+      <span className="loading">
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+      </span>
+    </>
+  ) : (
+    "Generate Ideas"
+  )}
           </button>
         </div>
       </div>

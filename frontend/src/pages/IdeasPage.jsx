@@ -18,7 +18,7 @@ export default function IdeasPage() {
 
   return (
     <div className="container">
-      <h2 style={{marginTop:0}}>Generated Research Gaps</h2>
+      <h2 style={{ marginTop: 0 }}>Generated Research Gaps</h2>
 
       {ideas.length === 0 ? (
         <div className="card">
@@ -28,16 +28,14 @@ export default function IdeasPage() {
         <div className="grid">
           {ideas.map((it, i) => (
             <div className="card" key={i}>
-              <h3 style={{marginTop:0}}>{it.title}</h3>
-              <p className="muted" style={{marginTop:6}}>
+              <h3 style={{ marginTop: 0 }}>{it.title}</h3>
+              <p className="muted clamp-3" style={{ marginTop: 6 }}>
                 {it.description}
               </p>
-              <div style={{display:"flex",gap:8,flexWrap:"wrap",marginTop:8}}>
-                {it.methodology && <span className="badge">{it.methodology}</span>}
-                {it.contribution && <span className="badge">Contribution</span>}
-              </div>
-              <div style={{marginTop:12}}>
-                <button className="btn btn-primary" onClick={() => openIdea(i)}>Details</button>
+              <div style={{ marginTop: 12 }}>
+                <button className="btn btn-primary" onClick={() => openIdea(i)}>
+                  Details
+                </button>
               </div>
             </div>
           ))}
