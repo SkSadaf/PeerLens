@@ -3,3 +3,10 @@ google-adk
 requests  
 PyPDF2
 python-dotenv
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+python-dotenv
+requests
+PyPDF2

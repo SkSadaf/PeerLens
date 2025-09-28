@@ -1,21 +1,32 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import IdeaDetails from "../components/IdeaDetails";
 
 export default function IdeaDetailsPage() {
+  const [idea, setIdea] = useState(null);
   const navigate = useNavigate();
-  const idea = JSON.parse(localStorage.getItem("selectedIdea") || "{}");
 
-  const handleEvaluate = () => {
-    navigate("/evaluation");
-  };
+  useEffect(() => {
+    const raw = sessionStorage.getItem("peer_selected_idea");
+    if (raw) setIdea(JSON.parse(raw));
+  }, []);
 
-  if (!idea || !idea.title) {
-    return <p className="text-center mt-20">No idea selected.</p>;
-  }
+  if (!idea) return <div className="container"><div className="card"><p className="muted">No idea selected.</p></div></div>;
 
   return (
-    <div className="max-w-3xl mx-auto mt-10">
-      <IdeaDetails idea={idea} onEvaluate={handleEvaluate} />
+    <div className="container">
+      <div className="card">
+        <h2 style={{marginTop:0}}>{idea.title}</h2>
+        <div className="section">
+          <p><b>Problem:</b> <span className="muted">{idea.problem}</span></p>
+          <p><b>Methodology:</b> <span className="muted">{idea.methodology}</span></p>
+          <p><b>Contribution:</b> <span className="muted">{idea.contribution}</span></p>
+        </div>
+        <div className="section">
+          <button className="btn btn-primary" onClick={() => navigate("/evaluation")}>
+            Evaluate this idea
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

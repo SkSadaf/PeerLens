@@ -1,56 +1,73 @@
-// import React from "react";
-// import Auth from "./Auth";
-
-// function App() {
-//   return (
-//     <div style={{ fontFamily: "Inter, system-ui, sans-serif", padding: 24 }}>
-//       <h1>Auth0 + CRA Demo</h1>
-//       <Auth />
-//     </div>
-//   );
-// }
-
-// export default App;
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import Layout from "./components/Layout";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import HomePage from "./pages/HomePage";
+import Auth from "./Auth";                 // your existing Auth component
+import Layout from "./components/Layout";  // keep using your Layout as before
 import UploadPage from "./pages/UploadPage";
 import IdeasPage from "./pages/IdeasPage";
 import IdeaDetailsPage from "./pages/IdeaDetailsPage";
 import EvaluationPage from "./pages/EvaluationPage";
-import Auth from "./Auth";
 
 function App() {
-  const { isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <p style={{ padding: 24 }}>Loading authentication...</p>;
-  }
+  const { isLoading } = useAuth0();
+  if (isLoading) return <p style={{ padding: 24 }}>Loading authentication…</p>;
 
   return (
     <div style={{ fontFamily: "Inter, system-ui, sans-serif" }}>
-      {!isAuthenticated ? (
-        // Show login/signup page if not logged in
-        <div style={{ padding: 24 }}>
-          <h1 className="text-2xl font-bold mb-4">Research Idea Assistant</h1>
-          <Auth />
-        </div>
-      ) : (
-        // Show main app pages when logged in
-        <Router>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<UploadPage />} />
-              <Route path="/ideas" element={<IdeasPage />} />
-              <Route path="/idea-details" element={<IdeaDetailsPage />} />
-              <Route path="/evaluation" element={<EvaluationPage />} />
-            </Routes>
-          </Layout>
-        </Router>
-      )}
+      <Router>
+        <Navbar />
+
+        {/* Layout wraps the page content; if your Layout already includes a header, 
+            you can move <Navbar /> inside Layout instead. */}
+        <Layout>
+          <Routes>
+            {/* Home (public) */}
+            <Route path="/" element={<HomePage />} />
+
+            {/* Auth page: shows your Auth.js (login UI).
+                If already logged in, Auth.js can show profile or you can redirect from there. */}
+            <Route path="/auth" element={<Auth />} />
+
+            {/* Protected App Pages */}
+            <Route
+              path="/upload"
+              element={
+                <ProtectedRoute>
+                  <UploadPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/ideas"
+              element={
+                <ProtectedRoute>
+                  <IdeasPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/idea-details"
+              element={
+                <ProtectedRoute>
+                  <IdeaDetailsPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/evaluation"
+              element={
+                <ProtectedRoute>
+                  <EvaluationPage />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </Layout>
+      </Router>
     </div>
   );
 }
